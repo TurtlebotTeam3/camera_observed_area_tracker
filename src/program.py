@@ -27,11 +27,11 @@ class CameraObservedAreaTracker:
         self.robot_yaw_old = 0
 
         # --- Publisher ---
-        self.pub_seen_map = rospy.Publisher('/camera_seen_map', OccupancyGrid, queue_size=1)
+        self.pub_seen_map = rospy.Publisher('camera_seen_map', OccupancyGrid, queue_size=1)
 
         # --- Subscriber ---
-        self.pose_subscriber = rospy.Subscriber('/simple_odom_pose', CustomPose, self._handle_pose_update)
-        self.map_sub = rospy.Subscriber('/map', OccupancyGrid, self._handle_map_update)
+        self.pose_subscriber = rospy.Subscriber('simple_odom_pose', CustomPose, self._handle_pose_update)
+        self.map_sub = rospy.Subscriber('map', OccupancyGrid, self._handle_map_update)
 
         self._setup_camera_seen_masks()
         rospy.loginfo("--- ready ---")
