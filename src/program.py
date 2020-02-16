@@ -118,7 +118,7 @@ class CameraObservedAreaTracker:
         oG = OccupancyGrid()
         # header
         oG.header.seq = self.map_camera_seen_seq
-        oG.header.frame_id = "map"
+        oG.header.frame_id = "Turtle4711/map"
         oG.header.stamp = rospy.Time.now()
         # set the info like it is in the original map
         oG.info = self.map_info
