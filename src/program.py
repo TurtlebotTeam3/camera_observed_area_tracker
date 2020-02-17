@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 import rospy
 import numpy as np
 import math
@@ -54,7 +55,7 @@ class CameraObservedAreaTracker:
                 self.robot_y_old = self.pose_converted.y
                 self.robot_yaw_old = self.pose_converted.yaw
         except:
-            print('update map camera seen failed')
+            rospy.logerr('update map camera seen failed')
 
     def _handle_map_update(self, data):
         """
@@ -282,4 +283,4 @@ if __name__ == "__main__":
     try:
         camera_observed_area_tracker = CameraObservedAreaTracker() 
     except:
-        print("Error while startup")
+        rospy.logerr("Error while startup")

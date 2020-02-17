@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="camera_observed_area_tracker" type="program.py" name="camera_observed_area_tracker" output="screen">
+    </node>
+</launch>
