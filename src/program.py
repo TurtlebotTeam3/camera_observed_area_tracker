@@ -74,10 +74,9 @@ class CameraObservedAreaTracker:
         """
         Updates the map that tracks the seen areas from the view of the camera
         """
-        #print('Angle: ' + str(yaw))
+
         yaw = (yaw + math.pi/2.0 + 2*math.pi) % (2*math.pi)
-        #print('Angle 2pi: ' + str(yaw))
-        
+
         # North
         if (yaw >= (15.0/16.0 * 2.0 * math.pi) and yaw < (2 * math.pi)) or (yaw >= 0 and yaw < (1.0/16.0 * 2.0 * math.pi)):
             self._map_camera_set_seen(x, y, self.mask_camera_seen_north, self.mask_camera_seen_north_offset_x, self.mask_camera_seen_north_offset_y)
@@ -115,6 +114,9 @@ class CameraObservedAreaTracker:
         self._publish_map_camera()
 
     def _publish_map_camera(self):
+        """
+        Publish map so it can be visualized in RViz and also used for path planing.
+        """
         # create occupany grid to publish it
         oG = OccupancyGrid()
         # header
@@ -157,6 +159,9 @@ class CameraObservedAreaTracker:
             y_mask = y_mask + 1
 
     def _setup_camera_seen_masks(self):
+        """
+        Create the masks for setting the seen areas.
+        """
         self.mask_camera_seen_north = np.array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                                                 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                                                 [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
